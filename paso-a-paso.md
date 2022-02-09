@@ -33,3 +33,4 @@
         ```
         - hacer require en main.js (entry de la aplicacion) require('@/plugins/fontawesome')
         - @https://fontawesome.com/icons/users-gear?s=solid <font-awesome-icon icon="fa-solid fa-headphones-simple" class="me-2" />
+3.- Crear Navbar

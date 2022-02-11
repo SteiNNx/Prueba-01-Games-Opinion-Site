@@ -4,17 +4,17 @@
       <h1>Lista de Opiniones</h1>
     </header>
     <section class="container">
-      <ListOpinions />
+      <AccordingsOpinions />
     </section>
   </div>
 </template>
 
 <script>
-import ListOpinions from "@/components/ListOpinions";
+import AccordingsOpinions from "@/components/AccordingsOpinions";
 export default {
   name: "Opiniones",
   components: {
-    ListOpinions,
+    AccordingsOpinions,
   },
 };
 </script>

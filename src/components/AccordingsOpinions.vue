@@ -36,7 +36,7 @@
 import { mapState } from "vuex";
 
 export default {
-  name: "ListOpinions",
+  name: "AccordingOpinions",
   computed: {
     ...mapState(["opinions"]),
   },

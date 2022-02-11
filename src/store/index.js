@@ -30,6 +30,7 @@ export default new Vuex.Store({
       state.opinion.opinion = payload;
     },
     SET_OPINIONS(state, payload) {
+      console.log({ payload });
       state.opinions = payload;
     },
   },
@@ -54,7 +55,12 @@ export default new Vuex.Store({
       newOpinions.push(currentOpinion);
       commit('SET_OPINIONS', newOpinions);
     },
+    deleteOpinion({ commit, state }, indexOpinion) {
+      const newOpinions = [
+        ...state.opinions.slice(0, indexOpinion),
+        ...state.opinions.slice(indexOpinion + 1)
+      ];
+      commit('SET_OPINIONS', newOpinions);
+    }
   },
-  modules: {
-  }
 })

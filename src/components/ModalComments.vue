@@ -7,7 +7,7 @@
             <div class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title">
-                  Escribe tu Opinion para el juego: {{ gameSelected.name }}
+                  {{ getTitleModal(gameSelected) }}
                 </h5>
                 <button
                   type="button"
@@ -97,6 +97,12 @@ export default {
       } else {
         this.editOpinion();
       }
+    },
+    getTitleModal(gameSelected) {
+      const { isEditing } = this;
+      return isEditing
+        ? "Estas editando una opinion"
+        : `Escribe tu Opinion para el juego: ${gameSelected.name}`;
     },
   },
 };

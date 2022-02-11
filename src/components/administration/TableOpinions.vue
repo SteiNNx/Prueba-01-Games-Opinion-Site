@@ -57,6 +57,12 @@ export default {
   methods: {
     ...mapActions(["deleteOpinion"]),
     editar(index) {
+      const findOpinion = this.opinions.find(
+        (opinion, indexOpinion) => index === indexOpinion
+      );
+
+      this.$store.commit("SET_NOMBREUSUARIO", findOpinion.nombre_usuario);
+      this.$store.commit("SET_OPINION", findOpinion.opinion);
       this.$store.commit("SET_ISOPENMODALOPINION", true);
       this.$store.commit("SET_INDEXOPINIONEDIT", index);
     },

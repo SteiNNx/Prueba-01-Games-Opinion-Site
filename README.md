@@ -1,29 +1,14 @@
-# prueba-games-opinion-site
+# **Prueba Games Opinion**
+Desarrollo Prueba Modulo 04 VueJS
 
-## Project setup
-```
-npm install
-```
+[Ver Sitio(Vercel)](https://prueba-01-games-opinion-site.vercel.app/)
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Run your unit tests
-```
-npm run test:unit
-```
-
-### Run your end-to-end tests
-```
-npm run test:e2e
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## **Capitulos**
+* VueCLI.
+* Parent y Children Components
+* Vue Router
+* Vuex
+* Bootstrap
+* FontAwesome
+* UnitTest: Jest
+* E2E: Cypress

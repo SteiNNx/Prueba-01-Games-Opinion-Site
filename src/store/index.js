@@ -14,6 +14,7 @@ export default new Vuex.Store({
       opinion: "",
     },
     gameSelected: {},
+    indexOpinionEditing: null,
     isOpenModalOpinion: false,
   },
   mutations: {
@@ -30,9 +31,11 @@ export default new Vuex.Store({
       state.opinion.opinion = payload;
     },
     SET_OPINIONS(state, payload) {
-      console.log({ payload });
       state.opinions = payload;
     },
+    SET_INDEXOPINIONEDIT(state, payload) {
+      state.indexOpinionEditing = payload;
+    }
   },
   actions: {
     setOpenModalOpinion({ commit, state }, indexGames) {
@@ -54,6 +57,7 @@ export default new Vuex.Store({
       const newOpinions = [...state.opinions];
       newOpinions.push(currentOpinion);
       commit('SET_OPINIONS', newOpinions);
+      commit('SET_ISOPENMODALOPINION', false);
     },
     deleteOpinion({ commit, state }, indexOpinion) {
       const newOpinions = [
@@ -61,6 +65,23 @@ export default new Vuex.Store({
         ...state.opinions.slice(indexOpinion + 1)
       ];
       commit('SET_OPINIONS', newOpinions);
-    }
+    },
+    editOpinion({ commit, state }) {
+      const { indexOpinionEditing } = state;
+      const currentEditOpinion = {
+        ...state.opinions[indexOpinionEditing],
+        nombre_usuario: state.opinion.nombre_usuario,
+        opinion: state.opinion.opinion,
+      };
+      const newOpinions = [
+        ...state.opinions.slice(0, indexOpinionEditing),
+        {
+          ...currentEditOpinion,
+        },
+        ...state.opinions.slice(indexOpinionEditing + 1),
+      ];
+      commit('SET_OPINIONS', newOpinions);
+      commit('SET_ISOPENMODALOPINION', false);
+    },
   },
 })

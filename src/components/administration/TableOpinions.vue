@@ -1,45 +1,62 @@
 <template>
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>Persona</th>
-        <th>Juego</th>
-        <th>Opinion</th>
-        <th>Acciones</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr v-for="(opinion, index) in opinions" :key="index">
-        <th>{{ index }}</th>
-        <td>{{ opinion.nombre_usuario }}</td>
-        <td>{{ opinion.nombre_juego }}</td>
-        <td>{{ opinion.opinion }}</td>
-        <td>
-          <button
-            :id="'btn-eliminar-' + index"
-            class="btn btn-danger me-2"
-            @click="deleteOpinion(index)"
-          >
-            Eliminar
-          </button>
-          <button :id="'btn-editar-' + index" class="btn btn-info">Editar</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <div>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Persona</th>
+          <th>Juego</th>
+          <th>Opinion</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="(opinion, index) in opinions" :key="index">
+          <th>{{ index }}</th>
+          <td>{{ opinion.nombre_usuario }}</td>
+          <td>{{ opinion.nombre_juego }}</td>
+          <td>{{ opinion.opinion }}</td>
+          <td>
+            <button
+              :id="'btn-eliminar-' + index"
+              class="btn btn-danger me-2"
+              @click="deleteOpinion(index)"
+            >
+              Eliminar
+            </button>
+            <button
+              :id="'btn-editar-' + index"
+              class="btn btn-info"
+              @click="editar(index)"
+            >
+              Editar
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <ModalComments isEditing />
+  </div>
 </template>
 
 <script>
-import { mapActions, mapState } from "vuex";
+import { mapActions, mapState, mapMutations } from "vuex";
+import ModalComments from "@/components/ModalComments";
 
 export default {
   name: "TableOpinions",
+  components: {
+    ModalComments,
+  },
   computed: {
     ...mapState(["opinions"]),
   },
   methods: {
     ...mapActions(["deleteOpinion"]),
+    editar(index) {
+      this.$store.commit("SET_ISOPENMODALOPINION", true);
+      this.$store.commit("SET_INDEXOPINIONEDIT", index);
+    },
   },
 };
 </script>

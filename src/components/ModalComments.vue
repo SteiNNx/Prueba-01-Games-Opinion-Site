@@ -45,7 +45,7 @@
                 <button type="button" class="btn btn-secondary" @click="closeModal">
                   Cerrar
                 </button>
-                <button type="button" class="btn btn-primary" @click="addOpinion">
+                <button type="button" class="btn btn-primary" @click="accion">
                   Guardar
                 </button>
               </div>
@@ -62,6 +62,14 @@ import { mapState, mapActions } from "vuex";
 
 export default {
   name: "ModalComments",
+  props: {
+    isEditing: {
+      type: Boolean,
+      default() {
+        return false;
+      },
+    },
+  },
   computed: {
     ...mapState(["isOpenModalOpinion", "gameSelected"]),
     nombre_usuario: {
@@ -82,7 +90,14 @@ export default {
     },
   },
   methods: {
-    ...mapActions(["closeModal", "addOpinion"]),
+    ...mapActions(["closeModal", "addOpinion", "editOpinion"]),
+    accion() {
+      if (!this.isEditing) {
+        this.addOpinion();
+      } else {
+        this.editOpinion();
+      }
+    },
   },
 };
 </script>

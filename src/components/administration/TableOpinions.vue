@@ -1,6 +1,9 @@
 <template>
   <div>
-    <table class="table table-hover">
+    <div v-if="opinions.length === 0" class="alert alert-danger">
+      No existen opiniones por mostrar.
+    </div>
+    <table v-else class="table table-hover">
       <thead>
         <tr>
           <th>#</th>
